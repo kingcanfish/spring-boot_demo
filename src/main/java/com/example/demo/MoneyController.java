@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
-
+//API 接口
 @RestController
 public class MoneyController {
     @Autowired
@@ -14,10 +14,10 @@ public class MoneyController {
     @Autowired
     private LuckmoneyService service;
     @GetMapping("/money/all")
-    public List<Luckmoney> list(){
+    public List<Luckmoney> list() {
          return repository.findAll();
     }
-    @PostMapping("/moneyy/create")
+    @PostMapping("/money/create")
     public Luckmoney create(@RequestParam("send") String send,
                             @RequestParam("money")BigDecimal money){
         Luckmoney luckmoney = new Luckmoney();
@@ -43,7 +43,7 @@ public class MoneyController {
     }
 
     @PostMapping("/money/two")
-    public void createTwo(){
+    public void createTwo() {
         service.createTwo();
     }
 

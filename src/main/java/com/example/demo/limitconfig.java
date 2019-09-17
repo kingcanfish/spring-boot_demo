@@ -1,5 +1,7 @@
 package com.example.demo;
 
+//演示使用及自己 config
+
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
