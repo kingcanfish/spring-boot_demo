@@ -12,12 +12,12 @@ public class LuckmoneyService {
     private LuckmoneyRepository luckmoneyRepository;
     @Transactional
     public void createTwo(){
-        luckmoney luckmoney1 = new luckmoney();
+        Luckmoney luckmoney1 = new Luckmoney();
         luckmoney1.setMoney(new BigDecimal("520"));
         luckmoney1.setSend("郭");
         luckmoneyRepository.save(luckmoney1);
 
-        luckmoney luckmoney2 = new luckmoney();
+        Luckmoney luckmoney2 = new Luckmoney();
         luckmoney2.setMoney(new BigDecimal("1314"));
         luckmoney2.setSend("郭");
         luckmoneyRepository.save(luckmoney2);
