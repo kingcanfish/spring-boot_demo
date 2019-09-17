@@ -6,7 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.math.BigDecimal;
 @Entity
-public class luckmoney {
+public class Luckmoney {
     @Id
     @GeneratedValue
     private Integer _id;
