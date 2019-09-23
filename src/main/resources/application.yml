@@ -16,6 +16,6 @@ spring:
     username: root
     password: keyu0102
   jpa:
-    show-sql: true
+    show-sql: false
     hibernate:
-      ddl-auto: create
+      ddl-auto: validate

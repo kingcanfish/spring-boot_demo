@@ -1,19 +1,25 @@
 package com.example.demo;
 
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
 import java.math.BigDecimal;
 
-//数据库model
+
 @Entity
 public class Luckmoney {
     @Id
     @GeneratedValue
     private Integer _id;
+
+    @Min(value = 10, message = "最小要发10块钱的红包哦～")
     private BigDecimal money;
+
     private String send;
+
     private String accept;
 
     public Integer get_id() {
@@ -24,7 +30,7 @@ public class Luckmoney {
         this._id = _id;
     }
 
-    public BigDecimal getMoney() {
+    BigDecimal getMoney() {
         return money;
     }
 
@@ -32,7 +38,7 @@ public class Luckmoney {
         this.money = money;
     }
 
-    public String getSend() {
+    String getSend() {
         return send;
     }
 
@@ -40,14 +46,14 @@ public class Luckmoney {
         this.send = send;
     }
 
-    public String getAccept() {
+    String getAccept() {
         return accept;
     }
 
-    public void setAccept(String accept) {
+    void setAccept(String accept) {
         this.accept = accept;
     }
     public String no(){
-        return "nopeople";
+        return "no people";
     }
 }

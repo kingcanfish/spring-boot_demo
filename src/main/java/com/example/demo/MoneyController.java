@@ -1,8 +1,12 @@
 package com.example.demo;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
@@ -18,11 +22,9 @@ public class MoneyController {
          return repository.findAll();
     }
     @PostMapping("/money/create")
-    public Luckmoney create(@RequestParam("send") String send,
-                            @RequestParam("money")BigDecimal money){
-        Luckmoney luckmoney = new Luckmoney();
-        luckmoney.setMoney(money);
-        luckmoney.setSend(send);
+    public Luckmoney create(@RequestBody Luckmoney luckmoney) {
+        System.out.println(luckmoney.getMoney() + " " + luckmoney.getAccept());
+
         return repository.save(luckmoney);
 
     }
@@ -32,12 +34,12 @@ public class MoneyController {
     }
     @PutMapping("/money/{id}")
     protected Luckmoney change(@PathVariable("id") Integer id ,
-                               @RequestParam("accept") String accept){
+                               @RequestBody Luckmoney luckmoney){
         Optional<Luckmoney> optional = repository.findById(id);
         if (optional.isPresent()) {
-            Luckmoney luckmoney = optional.get();
-            luckmoney.setAccept(accept);
-            return repository.save(luckmoney);
+            Luckmoney luckmoney9 = optional.get();
+            luckmoney9.setAccept(luckmoney.getAccept());
+            return repository.save(luckmoney9);
         }
         return null;
     }
