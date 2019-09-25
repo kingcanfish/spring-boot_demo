@@ -22,7 +22,11 @@ public class MoneyController {
          return repository.findAll();
     }
     @PostMapping("/money/create")
-    public Luckmoney create(@RequestBody Luckmoney luckmoney) {
+    public Luckmoney create(@RequestBody @Valid Luckmoney luckmoney, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            System.out.println( bindingResult.getFieldError().getDefaultMessage());
+            return null;
+        }
         System.out.println(luckmoney.getMoney() + " " + luckmoney.getAccept());
 
         return repository.save(luckmoney);
