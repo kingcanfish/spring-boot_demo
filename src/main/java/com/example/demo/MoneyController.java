@@ -15,25 +15,35 @@ import java.util.Optional;
 public class MoneyController {
     @Autowired
     private LuckMoneyRepository repository;
+
     @Autowired
     private LuckmoneyService service;
+
     @GetMapping("/money/all")
     public List<LuckMoney> list() {
          return repository.findAll();
     }
     @PostMapping("/money/create")
-    public LuckMoney create(@RequestBody @Valid LuckMoney luckmoney, BindingResult bindingResult) {
+    public HttpResult<LuckMoney> create(@RequestBody @Valid LuckMoney luckmoney, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
+            HttpResult httpResult = new HttpResult();
+            httpResult.setStatus(0);
+            httpResult.setMessage(bindingResult.getFieldError().getDefaultMessage());
+
             System.out.println( bindingResult.getFieldError().getDefaultMessage());
-            return null;
+            return httpResult;
         }
 //        System.out.println(luckmoney.getMoney() + " " + luckmoney.getAccept());
+        HttpResult httpResult = new HttpResult();
+        httpResult.setStatus(1);
+        httpResult.setMessage("获取成功");
+        httpResult.setData(repository.save(luckmoney));
+        return httpResult;
 
-        return repository.save(luckmoney);
 
     }
     @GetMapping("/money/{id}")
-    public LuckMoney find(@PathVariable("id") Integer id){
+    public LuckMoney find(@PathVariable("id") Integer id) {
         return repository.findById(id).orElse(null);
     }
     @PutMapping("/money/{id}")
