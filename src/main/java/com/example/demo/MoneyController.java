@@ -18,30 +18,30 @@ public class MoneyController {
     @Autowired
     private LuckmoneyService service;
     @GetMapping("/money/all")
-    public List<Luckmoney> list() {
+    public List<LuckMoney> list() {
          return repository.findAll();
     }
     @PostMapping("/money/create")
-    public Luckmoney create(@RequestBody @Valid Luckmoney luckmoney, BindingResult bindingResult) {
+    public LuckMoney create(@RequestBody @Valid LuckMoney luckmoney, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             System.out.println( bindingResult.getFieldError().getDefaultMessage());
             return null;
         }
-        System.out.println(luckmoney.getMoney() + " " + luckmoney.getAccept());
+//        System.out.println(luckmoney.getMoney() + " " + luckmoney.getAccept());
 
         return repository.save(luckmoney);
 
     }
     @GetMapping("/money/{id}")
-    public Luckmoney find(@PathVariable("id") Integer id){
+    public LuckMoney find(@PathVariable("id") Integer id){
         return repository.findById(id).orElse(null);
     }
     @PutMapping("/money/{id}")
-    protected Luckmoney change(@PathVariable("id") Integer id ,
-                               @RequestBody Luckmoney luckmoney){
-        Optional<Luckmoney> optional = repository.findById(id);
+    protected LuckMoney change(@PathVariable("id") Integer id ,
+                               @RequestBody LuckMoney luckmoney){
+        Optional<LuckMoney> optional = repository.findById(id);
         if (optional.isPresent()) {
-            Luckmoney luckmoney9 = optional.get();
+            LuckMoney luckmoney9 = optional.get();
             luckmoney9.setAccept(luckmoney.getAccept());
             return repository.save(luckmoney9);
         }

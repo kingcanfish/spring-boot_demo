@@ -2,10 +2,7 @@ package com.example.demo;
 
 
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -46,5 +43,11 @@ public class HttpAspect {
     public void doAfter() {
         System.out.println(22222);
         logger.info("2222");
+    }
+
+    @AfterReturning(returning = "object", pointcut = "log()")
+    public void doAfterReturn(Object object) {
+        logger.info("response={}", object.toString());
+
     }
 }

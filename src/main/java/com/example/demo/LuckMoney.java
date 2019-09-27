@@ -2,6 +2,10 @@ package com.example.demo;
 
 
 
+import org.hibernate.annotations.Table;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -9,12 +13,14 @@ import javax.validation.constraints.Min;
 import java.math.BigDecimal;
 
 
+
+
 @Entity
-public class Luckmoney {
+
+public class LuckMoney {
     @Id
     @GeneratedValue
     private Integer _id;
-
     @Min(value = 10, message = "最小要发10块钱的红包哦～")
     private BigDecimal money;
 
@@ -55,5 +61,15 @@ public class Luckmoney {
     }
     public String no(){
         return "no people";
+    }
+
+    @Override
+    public String toString() {
+        return "Luckmoney{" +
+                "_id=" + _id +
+                ", money=" + money +
+                ", send='" + send + '\'' +
+                ", accept='" + accept + '\'' +
+                '}';
     }
 }

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class hello {
 
     @Autowired
-    private limitconfig limitconfig;
+    private LimitConfig limitconfig;
     @GetMapping("/hello")
     public String say(){
         return "minMoney" + limitconfig.getMinMoney() +limitconfig.getDesc();
