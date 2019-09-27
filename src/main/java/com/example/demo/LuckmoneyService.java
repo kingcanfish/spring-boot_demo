@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 @Service
 public class LuckmoneyService {
     @Autowired
-    private LuckmoneyRepository luckmoneyRepository;
+    private LuckMoneyRepository luckmoneyRepository;
     @Transactional
     public void createTwo(){
         LuckMoney luckmoney1 = new LuckMoney();

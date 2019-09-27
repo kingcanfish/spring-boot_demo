@@ -14,7 +14,7 @@ import java.util.Optional;
 @RestController
 public class MoneyController {
     @Autowired
-    private LuckmoneyRepository repository;
+    private LuckMoneyRepository repository;
     @Autowired
     private LuckmoneyService service;
     @GetMapping("/money/all")

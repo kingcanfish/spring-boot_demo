@@ -4,5 +4,5 @@ package com.example.demo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface LuckmoneyRepository extends JpaRepository<LuckMoney , Integer> {
+public interface LuckMoneyRepository extends JpaRepository<LuckMoney , Integer> {
 }
