@@ -26,19 +26,11 @@ public class MoneyController {
     @PostMapping("/money/create")
     public HttpResult<LuckMoney> create(@RequestBody @Valid LuckMoney luckmoney, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            HttpResult httpResult = new HttpResult();
-            httpResult.setStatus(0);
-            httpResult.setMessage(bindingResult.getFieldError().getDefaultMessage());
-
             System.out.println( bindingResult.getFieldError().getDefaultMessage());
-            return httpResult;
+            return ReturnUtil.error(bindingResult.getFieldError().getDefaultMessage());
         }
 //        System.out.println(luckmoney.getMoney() + " " + luckmoney.getAccept());
-        HttpResult httpResult = new HttpResult();
-        httpResult.setStatus(1);
-        httpResult.setMessage("获取成功");
-        httpResult.setData(repository.save(luckmoney));
-        return httpResult;
+        return ReturnUtil.success(repository.save(luckmoney));
 
 
     }
