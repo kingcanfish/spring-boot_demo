@@ -27,7 +27,7 @@ public class MoneyController {
     public HttpResult<LuckMoney> create(@RequestBody @Valid LuckMoney luckmoney, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             System.out.println( bindingResult.getFieldError().getDefaultMessage());
-            return ReturnUtil.error(bindingResult.getFieldError().getDefaultMessage());
+            return ReturnUtil.error(0, bindingResult.getFieldError().getDefaultMessage());
         }
 //        System.out.println(luckmoney.getMoney() + " " + luckmoney.getAccept());
         return ReturnUtil.success(repository.save(luckmoney));
@@ -53,6 +53,11 @@ public class MoneyController {
     @PostMapping("/money/two")
     public void createTwo() {
         service.createTwo();
+    }
+    @GetMapping("/money/getage/{id}")
+    public void getAge(@PathVariable("id") Integer id) throws Exception {
+        service.getMoney(id);
+
     }
 
 }

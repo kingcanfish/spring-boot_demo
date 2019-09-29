@@ -10,10 +10,10 @@ public class ReturnUtil {
     }
 
 
-    public static  HttpResult error (String message) {
+    public static  HttpResult error (Integer code, String message) {
         HttpResult httpResult = new HttpResult();
         httpResult.setMessage(message);
-        httpResult.setStatus(0);
+        httpResult.setStatus(code);
         return httpResult;
     }
 }
